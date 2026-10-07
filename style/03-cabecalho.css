@@ -1,0 +1,26 @@
+/* =========================================================
+   03 - CABEÇALHO
+   Barra fixa, navegação desktop e drawer mobile acessível.
+   ========================================================= */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--aqua);z-index:99;transition:width .1s linear}
+.top{position:fixed;inset:0 0 auto;z-index:60;min-height:var(--header-height);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .35s ease,box-shadow .35s ease}
+.top.stuck{background:color-mix(in srgb,var(--paper) 96%,transparent);box-shadow:0 8px 24px rgba(30,40,64,.08)}
+.top__in{display:flex;align-items:center;gap:1.2rem;padding:.9rem 0;min-height:64px}
+.brand{font-family:"Fraunces",serif;font-size:1.12rem;text-decoration:none;color:var(--deep);line-height:1.15;white-space:nowrap;display:flex;align-items:center;gap:.65rem;min-width:0}
+.brand__mark{height:38px;width:auto;display:block;flex:none}.brand small{display:block;font-family:"Karla",sans-serif;font-size:.67rem;letter-spacing:.09em;color:var(--muted)}
+.nav{margin-left:auto;display:flex;gap:1.5rem;align-items:center}.nav .links{display:flex;gap:1.5rem}.nav a{font-size:.94rem;text-decoration:none;color:var(--muted);position:relative;padding:.2rem 0}.nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:1.5px;width:0;background:var(--aqua);transition:width .3s ease}.nav a:hover::after,.nav a.on::after{width:100%}.nav a.on{color:var(--deep)}
+.tools{display:flex;align-items:center;gap:.6rem;margin-left:1rem}.icon-btn{width:44px;height:44px;min-width:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--deep);display:grid;place-items:center;cursor:pointer;transition:.25s}.icon-btn:hover{border-color:var(--aqua);color:var(--aqua);transform:rotate(-12deg)}
+/* Oculto por padrão no desktop; ativado apenas no breakpoint mobile/tablet. */
+.burger{display:none}
+@media(max-width:1024px){.nav .links{display:none!important}.burger{display:grid!important}}
+@media(min-width:641px) and (max-width:1024px){:root{--header-height:72px}.top__in{padding-block:.75rem}.tools{gap:.5rem;margin-left:.8rem}}
+
+/* Drawer fullscreen: fechado não captura foco/cliques e não interfere no scroll. */
+.drawer{position:fixed;inset:0;z-index:80;background:var(--ink);display:grid;place-items:center;padding:5rem var(--gutter) 3rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s}
+.drawer.open{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+.drawer nav{display:grid;gap:clamp(1rem,3vh,1.5rem);width:min(100%,28rem);text-align:center}.drawer a{font-family:"Fraunces",serif;font-size:clamp(1.5rem,7vw,2.25rem);line-height:1.1;color:#EAF2EC;text-decoration:none;opacity:0;transform:translateY(14px);padding:.35rem;min-height:48px;display:grid;place-items:center}.drawer a:hover,.drawer a:focus-visible{color:#9FB6AF}.drawer .drawer__cta{font-family:"Karla",sans-serif;font-size:1rem;font-weight:700;letter-spacing:.02em;color:var(--ink);background:#9FB6AF;border-radius:999px;margin-top:.6rem;padding:.85rem 1.2rem;min-height:48px}.drawer .drawer__cta:hover,.drawer .drawer__cta:focus-visible{color:var(--ink);background:#D6E4DD}.drawer.open a{animation:rise .5s cubic-bezier(.2,.8,.3,1) forwards}.drawer.open a:nth-child(2){animation-delay:.06s}.drawer.open a:nth-child(3){animation-delay:.12s}.drawer.open a:nth-child(4){animation-delay:.18s}.drawer.open a:nth-child(5){animation-delay:.24s}.drawer.open a:nth-child(6){animation-delay:.30s}
+.drawer .close{position:absolute;top:max(1rem,env(safe-area-inset-top));right:max(var(--gutter),env(safe-area-inset-right));width:48px;height:48px;background:none;border:1px solid rgba(234,242,236,.35);border-radius:50%;color:#EAF2EC;font-size:2rem;cursor:pointer;line-height:1;display:grid;place-items:center}.drawer .close:hover{border-color:#9FB6AF;color:#9FB6AF}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:640px){.top{padding-top:env(safe-area-inset-top)}.top__in{padding:.7rem 0}.brand{font-size:1.02rem;gap:.55rem}.brand__mark{height:32px}.tools{gap:.4rem;margin-left:.6rem}.drawer{padding-bottom:max(3rem,env(safe-area-inset-bottom))}}
+@media(max-width:400px){.brand small{display:none}}
+@media(prefers-reduced-motion:reduce){.drawer{transition:none}.drawer.open a{animation:none;opacity:1;transform:none}}

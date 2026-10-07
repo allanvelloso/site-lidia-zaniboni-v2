@@ -1,0 +1,11 @@
+/* =========================================================
+   02 - BOTÕES
+   Estilo compartilhado e alvos de toque acessíveis.
+   ========================================================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:48px;background:var(--aqua);color:var(--aqua-ink);text-decoration:none;font-weight:600;font-size:.95rem;padding:.78rem 1.3rem;border-radius:999px;border:none;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.3,1),box-shadow .25s,filter .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px color-mix(in srgb,var(--aqua) 35%,transparent)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn--ghost{background:transparent;color:var(--deep);border:1px solid var(--line);font-weight:500}
+.btn--ghost:hover{border-color:var(--aqua);box-shadow:none;color:var(--aqua)}
+.btn--lg{min-height:48px;padding:.95rem 1.6rem;font-size:1rem}
+@media(max-width:640px){.btn{width:100%;padding-inline:1rem}.btn--lg{min-height:48px}}

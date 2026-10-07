@@ -1,0 +1,63 @@
+/* =========================================================
+   04 - HERO (seção de abertura)
+   Título animado palavra por palavra e padrão institucional em
+   efeito parallax ao fundo, e a faixa de estatísticas.
+   ========================================================= */
+
+.hero{padding:clamp(3rem,9vw,6rem) 0 clamp(3rem,7vw,5rem);overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+
+/* padrão heráldico em parallax (imagem em img/padrao-brasao.png) */
+.parallax{position:absolute;left:0;right:0;pointer-events:none;z-index:0;background-repeat:repeat;will-change:transform}
+.parallax--hero{
+  top:-18%;bottom:-45%;
+  background-image:url('../img/padrao-brasao.png');
+  background-size:340px auto;
+  opacity:.4;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.55) 55%,transparent 92%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.55) 55%,transparent 92%);
+}
+@media(max-width:640px){
+  .hero{padding:2.1rem 0 2.4rem}
+  .parallax--hero{background-size:230px auto}
+
+  /* botões de chamada em coluna, ocupando a largura toda — mais fácil de tocar */
+  .hero__cta{flex-direction:column;align-items:stretch}
+  .hero__cta .btn{justify-content:center}
+
+  /* duas colunas fixas em vez do auto-fit, para não gerar uma 3ª coluna torta */
+  /* as métricas são úteis no desktop, mas alongam a primeira tela no celular */
+  .stats{display:none}
+
+  .eyebrow{font-size:.78rem;padding:.3rem .75rem}
+}
+
+@media(max-width:400px){h1.big{font-size:clamp(2.15rem,10vw,2.7rem)}}
+
+/* faixa decorativa com o mesmo padrão, usada entre "Como funciona" e "Sobre" */
+.band--crest{position:relative;overflow:hidden;padding:clamp(3.5rem,8vw,5.5rem) 0}
+.band--crest .parallax{top:-30%;bottom:-30%;background-size:300px auto;opacity:.5}
+.band--crest .content{position:relative;z-index:1;text-align:center;max-width:44ch;margin-inline:auto}
+.band--crest h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:300}
+.band--crest p{color:var(--muted);margin-top:.9rem}
+@media(max-width:640px){.band--crest{display:none}}
+
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .parallax{opacity:.16}}
+:root[data-theme="dark"] .parallax{opacity:.16}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--aqua);background:var(--aqua-soft);padding:.35rem .85rem;border-radius:999px;font-weight:600;margin-bottom:1.5rem}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--aqua);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+
+h1.big{font-size:clamp(2.4rem,6.4vw,4.6rem);font-weight:300;max-width:15ch}
+h1.big em{font-style:italic}
+.word{display:inline-block;opacity:0;transform:translateY(24px);animation:rise .75s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+
+.hero__lead{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--muted);max-width:47ch;margin-top:1.6rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+.hero__trust{font-size:.9rem;color:var(--muted);margin-top:1rem}.hero__trust strong{color:var(--deep)}
+
+.stats{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem}
+.stat b{display:block;font-family:"Fraunces",serif;font-size:clamp(1.8rem,4vw,2.5rem);color:var(--deep);font-weight:300;line-height:1}
+.stat span{font-size:.88rem;color:var(--muted)}

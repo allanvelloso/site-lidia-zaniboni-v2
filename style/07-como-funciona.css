@@ -1,0 +1,23 @@
+/* =========================================================
+   07 - COMO FUNCIONA
+   Linha do tempo vertical que se preenche conforme a
+   pessoa rola a página (ver js/05-scroll.js).
+   ========================================================= */
+
+.tl{display:grid;gap:0;position:relative;max-width:820px}
+.tl::before{content:"";position:absolute;left:19px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.tl__fill{position:absolute;left:19px;top:10px;width:2px;background:var(--aqua);height:0;transition:height .5s ease}
+.tl__item{display:grid;grid-template-columns:40px 1fr;gap:1.4rem;padding:1.4rem 0;position:relative}
+.tl__dot{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--paper);display:grid;place-items:center;font-family:"Fraunces",serif;color:var(--muted);transition:.4s;z-index:1}
+.tl__item.on .tl__dot{border-color:var(--aqua);background:var(--aqua);color:var(--aqua-ink);transform:scale(1.08)}
+.tl__item h3{font-size:1.35rem;margin-bottom:.35rem}
+.tl__item p{color:var(--muted);margin:0;font-size:.97rem;max-width:56ch}
+
+@media(max-width:640px){
+  /* dot menor e texto mais próximo da linha, para não perder espaço horizontal */
+  .tl::before,.tl__fill{left:15px}
+  .tl__item{grid-template-columns:32px 1fr;gap:1rem;padding:1.1rem 0}
+  .tl__dot{width:32px;height:32px;font-size:.9rem}
+  .tl__item h3{font-size:1.15rem}
+  .tl__item p{font-size:.93rem}
+}

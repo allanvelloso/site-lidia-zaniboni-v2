@@ -1,0 +1,53 @@
+/* =========================================================
+   10 - CONTATO
+   Bloco de informações + formulário em 3 etapas (wizard),
+   incluindo o consentimento de dados (LGPD).
+   ========================================================= */
+
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:880px){.contact{grid-template-columns:1fr}}
+
+@media(max-width:640px){
+  .wiz{padding:1.3rem 1.1rem;border-radius:14px}
+  .wiz h3{font-size:1.3rem}
+  .chips{gap:.4rem}
+  .chip{padding:.45rem .8rem;font-size:.85rem}
+
+  /* botões do formulário em coluna — mantém a ordem original (acessibilidade:
+     ordem visual igual à ordem de navegação por teclado/leitor de tela) */
+  .wiz__nav{flex-direction:column;align-items:stretch;gap:.6rem}
+  .wiz__nav .btn{justify-content:center;width:100%}
+}
+
+.info{display:grid;gap:1.5rem}
+.info b{display:block;font-family:"Fraunces",serif;font-weight:400;color:var(--deep);margin-bottom:.25rem}
+.info p{margin:0;color:var(--muted);font-size:.96rem}
+.info a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.info a:hover{color:var(--aqua);border-bottom-color:var(--aqua)}
+
+.wiz{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(1.5rem,4vw,2.2rem);box-shadow:var(--shadow)}
+.wiz__steps{display:flex;gap:.4rem;margin-bottom:1.6rem}
+.wiz__steps i{flex:1;height:3px;border-radius:99px;background:var(--sage);transition:background .4s}
+.wiz__steps i.on{background:var(--aqua)}
+.wiz h3{font-size:1.5rem;font-weight:400;margin-bottom:.3rem}
+.wiz .sub{font-size:.9rem;color:var(--muted);margin-bottom:1.3rem}
+
+label{display:grid;gap:.35rem;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:.9rem}
+input,select,textarea{font-family:inherit;font-size:.98rem;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:.75rem .85rem;width:100%;transition:.25s}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--aqua);box-shadow:0 0 0 3px color-mix(in srgb,var(--aqua) 20%,transparent)}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.chip{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer;transition:.2s}
+.chip:hover{border-color:var(--aqua)}
+.chip.on{background:var(--aqua);color:var(--aqua-ink);border-color:var(--aqua)}
+
+.wiz__nav{display:flex;gap:.7rem;align-items:center;margin-top:.4rem}
+.err{color:#B3402E;font-size:.84rem;margin:.2rem 0 .8rem;display:none}
+:root[data-theme="dark"] .err{color:#F0876F}
+
+/* consentimento LGPD */
+.consent{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start;font-weight:400;font-size:.88rem;color:var(--text);margin:.3rem 0 .2rem}
+.consent input{width:auto;margin-top:.2rem}
+.consent span{line-height:1.45}
+.consent .linkish{font-size:inherit;color:var(--aqua);text-decoration:underline;font-weight:600}

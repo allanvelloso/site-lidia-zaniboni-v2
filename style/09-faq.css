@@ -1,0 +1,19 @@
+/* =========================================================
+   09 - PERGUNTAS FREQUENTES
+   Acordeão com altura animada (ver js/10-faq.js).
+   ========================================================= */
+
+.faq{max-width:74ch;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:1.15rem 2.2rem 1.15rem 0;position:relative;font-weight:600;color:var(--deep)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:.5rem;top:1.5rem;width:11px;height:11px;border-right:1.6px solid var(--aqua);border-bottom:1.6px solid var(--aqua);transform:rotate(45deg);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq .ans{overflow:hidden}
+.faq p{color:var(--muted);padding-bottom:1.2rem;margin:0;font-size:.97rem}
+
+@media(max-width:640px){
+  .faq summary{padding:1rem 1.8rem 1rem 0;font-size:.96rem}
+  .faq summary::after{right:.2rem;top:1.35rem}
+  .faq p{font-size:.93rem}
+}
